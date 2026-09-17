@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Dashboard — Overview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard/screen-reader users jump past nav -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__name">Enterprise<strong>OS</strong></span>
+    </div>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#main-content" aria-current="page">Overview</a></li>
+        <li><a href="#projects-section">Projects</a></li>
+        <li><a href="#reports-section">Reports</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn--ghost" aria-label="View notifications">
+        <span aria-hidden="true">&#9679;</span> Notifications
+      </button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" aria-label="Section navigation">
+      <nav>
+        <ul>
+          <li><a href="#main-content" class="sidebar__link is-active">Dashboard</a></li>
+          <li><a href="#projects-section" class="sidebar__link">Projects</a></li>
+          <li><a href="#reports-section" class="sidebar__link">Reports</a></li>
+          <li><a href="#" class="sidebar__link">Team Members</a></li>
+          <li><a href="#" class="sidebar__link">Settings</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content" class="main-content">
+
+      <section aria-labelledby="overview-heading" class="overview">
+        <h1 id="overview-heading">Dashboard Overview</h1>
+        <p>Summary of active projects, pending approvals, and recent team activity.</p>
+
+        <div class="stat-grid" role="list">
+          <article class="stat-card" role="listitem">
+            <h2 class="stat-card__label">Active Projects</h2>
+            <p class="stat-card__value">12</p>
+          </article>
+          <article class="stat-card" role="listitem">
+            <h2 class="stat-card__label">Pending Reviews</h2>
+            <p class="stat-card__value">4</p>
+          </article>
+          <article class="stat-card" role="listitem">
+            <h2 class="stat-card__label">Team Members</h2>
+            <p class="stat-card__value">27</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== DATA TABLE SECTION ===== -->
+      <section id="projects-section" aria-labelledby="projects-heading" class="projects">
+        <div class="section-header">
+          <h2 id="projects-heading">Recent Projects</h2>
+          <button type="button" id="openModalBtn" class="btn btn--primary"
+                  aria-haspopup="dialog" aria-controls="addRecordModal">
+            + Add New Project
+          </button>
+        </div>
+
+        <div class="table-wrapper" tabindex="0" role="region" aria-labelledby="projects-heading">
+          <table>
+            <caption class="sr-only">List of recent projects with status and owner</caption>
+            <thead>
+              <tr>
+                <th scope="col">Project Name</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Status</th>
+                <th scope="col">Due Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Client Portal Redesign</th>
+                <td>Ananya Sharma</td>
+                <td><span class="badge badge--progress">In Progress</span></td>
+                <td><time datetime="2026-10-05">05 Oct 2026</time></td>
+              </tr>
+              <tr>
+                <th scope="row">Internal Analytics Tool</th>
+                <td>Rohit Verma</td>
+                <td><span class="badge badge--done">Completed</span></td>
+                <td><time datetime="2026-09-20">20 Sep 2026</time></td>
+              </tr>
+              <tr>
+                <th scope="row">Mobile App QA Pass</th>
+                <td>Priya Nair</td>
+                <td><span class="badge badge--pending">Pending</span></td>
+                <td><time datetime="2026-10-12">12 Oct 2026</time></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== REPORTS SECTION ===== -->
+      <section id="reports-section" aria-labelledby="reports-heading" class="reports">
+        <h2 id="reports-heading">Reports</h2>
+        <article aria-labelledby="report1-heading">
+          <h3 id="report1-heading">Weekly Team Velocity</h3>
+          <p>Auto-generated every Monday from sprint board activity.</p>
+        </article>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 EnterpriseOS. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== MODAL DIALOG ===== -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal"
+         id="addRecordModal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="modalTitle">
+
+      <form novalidate id="addProjectForm">
+        <fieldset>
+          <legend id="modalTitle">Add New Project</legend>
+
+          <div class="form-field">
+            <label for="projectName">Project Name</label>
+            <input type="text" id="projectName" name="projectName"
+                   required aria-required="true"
+                   aria-describedby="projectNameError">
+            <span class="field-error" id="projectNameError" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="projectOwner">Owner</label>
+            <input type="text" id="projectOwner" name="projectOwner"
+                   required aria-required="true"
+                   aria-describedby="projectOwnerError">
+            <span class="field-error" id="projectOwnerError" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="projectDueDate">Due Date</label>
+            <input type="date" id="projectDueDate" name="projectDueDate"
+                   required aria-required="true">
+          </div>
+
+          <div class="form-field">
+            <label for="projectStatus">Status</label>
+            <select id="projectStatus" name="projectStatus" required aria-required="true">
+              <option value="">Select status</option>
+              <option value="progress">In Progress</option>
+              <option value="pending">Pending</option>
+              <option value="done">Completed</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <div class="modal-actions">
+          <button type="button" id="closeModalBtn" class="btn btn--ghost">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
