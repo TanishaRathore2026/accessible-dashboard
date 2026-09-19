@@ -1,3 +1,22 @@
+// ===== Theme toggle =====
+const themeToggle = document.getElementById('themeToggle');
+const rootEl = document.documentElement;
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+let isDark = prefersDark;
+syncThemeToggle();
+
+themeToggle.addEventListener('click', () => {
+  isDark = !isDark;
+  rootEl.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  syncThemeToggle();
+});
+
+function syncThemeToggle() {
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+  themeToggle.querySelector('span[aria-hidden]').textContent = isDark ? '\u2600' : '\u263D';
+  themeToggle.lastChild.textContent = isDark ? ' Light mode' : ' Dark mode';
+}
+
 // ===== Accessible Modal Dialog Logic =====
 const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
